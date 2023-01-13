@@ -9,7 +9,6 @@
 		<CLVersion>14.32.31326</CLVersion>
 		<DriveLetter>N:</DriveLetter>
 		<KitsVersion>10.0.19041.0</KitsVersion>
-		<Platform>x64;x86</Platform>
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
