@@ -1,0 +1,100 @@
+﻿[
+	uuid(DF13CEFA-A71E-437B-9EDD-D3667A503A9B),
+	version(1.0),
+	helpstring("COMforPythonLibrary")
+]
+library COMforPythonLibrary
+{
+	importlib("STDOLE2.TLB");
+
+	[
+		odl,
+		uuid(9B0465A1-B518-4D72-9DEB-5AE57EA50FA7),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("ICoordinates"),
+		object
+	]
+	interface ICoordinates : IDispatch
+	{
+		[
+			id(1),
+			helpstring("getX")
+		]
+		HRESULT getX([out, retval] double* ReturnVal);
+		
+		[
+			id(2),
+			helpstring("getY")
+		]
+		HRESULT getY([out, retval] double* ReturnVal);
+
+	};
+
+	[
+		uuid(82176C07-D083-486F-A238-7E4E7AB413D9),
+		helpstring("Coordinates")
+	]
+	coclass Coordinates
+	{
+		[default] interface ICoordinates;
+	};
+
+	[
+		odl,
+		uuid(40051BA5-014B-415F-B96C-3F94879A046F),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("IResults"),
+		object
+	]
+
+	interface IResults : IDispatch
+	{
+		[
+			id(1),
+			helpstring("GetCoordinates")
+		]
+		HRESULT GetCoordinates([out, retval] SAFEARRAY(ICoordinates*)* ReturnVal);
+
+	};
+
+	[
+		uuid(C6E5ED6D-D289-4F8F-8FB3-7280E2CE6932),
+		helpstring("Results")
+	]
+	coclass Results
+	{
+		[default] interface IResults;
+	};
+
+	[
+		odl,
+		uuid(C599571D-AF36-4E4B-86B4-DACE967EF7DE),
+		dual,
+		oleautomation,
+		nonextensible,
+		helpstring("IComObject"),
+		object
+	]
+	interface IComObject : IDispatch
+	{
+		[
+			id(1),
+			helpstring("Coordinates")
+		]
+		HRESULT Coordinates([out, retval] SAFEARRAY(ICoordinates*)* ReturnVal);
+
+	};
+
+	[
+		uuid(C79A76AA-9D99-4DA5-9B2A-F3BE276906D0),
+		helpstring("ComObject")
+	]
+	coclass ComObject
+	{
+		[default] interface IComObject;
+	};
+}
